@@ -16,6 +16,8 @@ from tester import BaseTester, RATE16K_MONO_WAV
 
 class Tester(BaseTester):
 
+    name = 'GoogleSpeech'
+
     audio_format = RATE16K_MONO_WAV
 
     def __init__(self, *args, **kwargs):

@@ -26,6 +26,8 @@ from test_houndify_sensitive import *
 
 class Tester(BaseTester):
 
+    name = 'Houndify'
+
     audio_format = RATE16K_MONO_WAV
 
     def __init__(self, *args, **kwargs):

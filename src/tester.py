@@ -14,6 +14,8 @@ AUDIO_DIR = '../data/audio'
 
 class BaseTester(object):
 
+    name = None
+
     # The audio encoding format required for input.
     audio_format = None
 
@@ -21,6 +23,7 @@ class BaseTester(object):
         raise NotImplementedError
 
     def test(self):
+        assert self.name
         assert self.audio_format, 'No audio format specified.'
         history = []
         abs_history = []

@@ -56,3 +56,25 @@ https://www.houndify.com
         time: 35s
         diff accuracy: 0.853484911794
         abs accuracy: 0.6
+
+Bing
+----
+
+./test_bingspeech.py
+
+    2018-1-10
+    
+        time: 2m13s
+        diff accuracy: 0.837140933267
+        abs accuracy: 0.666666666667
+
+Ensemble
+--------
+
+./test_ensemble.py
+
+    2018-1-10
+    
+        time: 2m1s
+        diff accuracy: 0.862723939613
+        abs accuracy: 0.6

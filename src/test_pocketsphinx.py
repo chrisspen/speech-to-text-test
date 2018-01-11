@@ -3,6 +3,7 @@
 """
 CS 2018-1-10
 Evaluates the accuracy of PocketSphinx.
+https://raw.githubusercontent.com/Uberi/speech_recognition/master/examples/audio_transcribe.py
 """
 from __future__ import absolute_import, division, print_function
 from timeit import default_timer as timer
@@ -14,6 +15,8 @@ import speech_recognition as sr
 from tester import BaseTester, RATE16K_MONO_WAV
 
 class Tester(BaseTester):
+
+    name = 'PocketSphinx'
 
     audio_format = RATE16K_MONO_WAV
 

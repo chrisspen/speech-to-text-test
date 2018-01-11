@@ -50,6 +50,8 @@ N_CONTEXT = 9
 
 class Tester(BaseTester):
 
+    name = 'DeepSpeech'
+
     audio_format = RATE16K_MONO_WAV
 
     def __init__(self, *args, **kwargs):
