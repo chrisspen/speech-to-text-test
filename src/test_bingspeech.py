@@ -24,6 +24,7 @@ class Tester(BaseTester):
     audio_format = RATE16K_MONO_WAV
 
     def __init__(self, *args, **kwargs):
+        self.delay = kwargs.pop('delay', True)
         super(Tester, self).__init__(*args, **kwargs)
         self.recognizer = sr.Recognizer()
 
@@ -33,7 +34,8 @@ class Tester(BaseTester):
                 audio = self.recognizer.record(source)
                 print('Running inference.', file=sys.stderr)
                 inference_start = timer()
-                time.sleep(60/20.+0.5) # bing limits us to 20 requests per minute...ugh
+                if self.delay:
+                    time.sleep(60/20.+0.5) # bing limits us to 20 requests per minute...ugh
                 text = self.recognizer.recognize_bing(audio, key=BING_KEY) # pylint: disable=undefined-variable
 
                 # Bing adds some unnecessary punctuation, which our corpus doesn't check, so strip it out.

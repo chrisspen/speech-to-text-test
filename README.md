@@ -75,6 +75,6 @@ Ensemble
 
     2018-1-10
     
-        time: 2m1s
-        diff accuracy: 0.862723939613
-        abs accuracy: 0.6
+        time: 2m25s
+        diff accuracy: 0.922982141044
+        abs accuracy: 0.733333333333

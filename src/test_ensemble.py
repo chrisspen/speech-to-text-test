@@ -13,6 +13,7 @@ from test_googlespeech import Tester as GoogleSpeechTester
 from test_pocketsphinx import Tester as PocketSphinxTester
 from test_deepspeech import Tester as DeepSpeechTester
 from test_houndify import Tester as HoundifyTester
+from test_bingspeech import Tester as BingTester
 
 class Tester(BaseTester):
 
@@ -25,22 +26,26 @@ class Tester(BaseTester):
 
         # Absolute accuracy * differential accuracy used as weight.
         self.weights = {
-            GoogleSpeechTester: 0.6 + 0.726952838341,
-            PocketSphinxTester: 0.3 + 0.650675023999,
-            DeepSpeechTester: 0.43 + 0.728972718858,
-            HoundifyTester: 0.6 + 0.853484911794
+            GoogleSpeechTester: (0.6 + 0.726952838341)/2.,
+            PocketSphinxTester: (0.3 + 0.650675023999)/2.,
+            DeepSpeechTester: (0.43 + 0.728972718858)/2.,
+            HoundifyTester: (0.6 + 0.853484911794)/2.,
+            BingTester: (0.666666666667 + 0.837140933267)/2.,
         }
         self.testers = [
             GoogleSpeechTester(),
             PocketSphinxTester(),
             DeepSpeechTester(),
-            HoundifyTester()
+            HoundifyTester(),
+            BingTester(delay=False),
         ]
 
     def audio_to_text(self, fn):
         votes = defaultdict(float) # {text: sum of weights}
         for _tester in self.testers:
-            predicted_text = _tester.audio_to_text(fn)
+            predicted_text = _tester.audio_to_text(fn) or ''
+            predicted_text = predicted_text.lower().strip()
+            predicted_text = predicted_text.replace("'", '')
             weight = self.weights[type(_tester)]
             if predicted_text:
                 # If most of the testers give up, don't let their failures result in a failed prediction.
