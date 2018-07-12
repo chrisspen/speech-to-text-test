@@ -1,2 +1,6 @@
 PyYAML
 scipy
+pyaudio
+matplotlib
+numpy
+scikit-learn

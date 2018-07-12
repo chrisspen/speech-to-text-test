@@ -1,0 +1,5 @@
+# Required by PyAudio
+portaudio19-dev
+
+# Required by fftvis.py
+python-qwt5-qt4
