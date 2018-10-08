@@ -12,7 +12,7 @@ import sys
 
 import scipy.io.wavfile as wav
 
-from deepspeech.model import Model
+from deepspeech import Model
 
 from tester import BaseTester, RATE16K_MONO_WAV
 
@@ -70,7 +70,13 @@ class Tester(BaseTester):
         if args_lm and args_trie:
             print('Loading language model from files %s %s' % (args_lm, args_trie), file=sys.stderr)
             lm_load_start = timer()
-            self.ds.enableDecoderWithLM(args_alphabet, args_lm, args_trie, LM_WEIGHT, WORD_COUNT_WEIGHT, VALID_WORD_COUNT_WEIGHT)
+            self.ds.enableDecoderWithLM(
+                args_alphabet,
+                args_lm, args_trie,
+                LM_WEIGHT,
+                # WORD_COUNT_WEIGHT, # removed in version 0.2.0?
+                VALID_WORD_COUNT_WEIGHT
+            )
             lm_load_end = timer() - lm_load_start
             print('Loaded language model in %0.3fs.' % (lm_load_end), file=sys.stderr)
 

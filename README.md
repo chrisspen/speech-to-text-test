@@ -14,15 +14,26 @@ https://github.com/mozilla/DeepSpeech
 
     2018-1-8
     
+        version: 0.1.0
         diff accuracy: 0.728972718858
         abs accuracy: 0.433333333333
         real: 40s
 
     2018-7-12
 
+        version: 0.1.0
         diff accuracy: 0.774034944463
         abs accuracy: 0.253521126761
         real: 4m28.3034749031s
+        samples: 142
+
+    2018-10-8
+
+        version: 0.2.0
+        diff accuracy: 0.7217131145921839
+        abs accuracy: 0.028169014084507043
+        real: 4m28.3034749031s
+        samples: 142
 
 Google Speech
 -------------
@@ -42,6 +53,14 @@ https://pypi.python.org/pypi/SpeechRecognition/
         diff accuracy: 0.819401803119
         abs accuracy: 0.394366197183
         real: 1m36.2234201431s
+        samples: 142
+
+    2018-10-8
+    
+        diff accuracy: 0.819401803119
+        abs accuracy: 0.394366197183
+        real: 1m33.689s
+        samples: 142
 
 PocketSphinx
 ------------
@@ -62,6 +81,14 @@ https://github.com/bambocher/pocketsphinx-python
         diff accuracy: 0.675711847027
         abs accuracy: 0.140845070423
         real: 2m4.07494902611s
+        samples: 142
+
+    2018-10-8
+    
+        diff accuracy: 0.6639683027589178
+        abs accuracy: 0.16901408450704225
+        real: 1m29.295s
+        samples: 142
 
 Houndify
 --------
@@ -82,6 +109,14 @@ https://www.houndify.com
         diff accuracy: 0.859605148697
         abs accuracy: 0.394366197183
         real: 2m57.0215849876s
+        samples: 142
+
+    2018-10-8
+
+        diff accuracy: 0.860153219863991
+        abs accuracy: 0.4084507042253521
+        real: 3m16.033s
+        samples: 142
 
 Bing
 ----
@@ -114,3 +149,4 @@ Ensemble
         diff accuracy: 0.86423527877
         abs accuracy: 0.43661971831
         real: 10m7.54498410225s
+        samples: 142

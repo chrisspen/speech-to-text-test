@@ -42,7 +42,7 @@ class BaseTester(object):
             expected_text = expected_text.strip().lower().replace("'", "")
             ratio = similar(predicted_text, expected_text)
             print('\tpredicted_text:', predicted_text)
-            print('\texpected_text:', expected_text)
+            print('\texpected_text: ', expected_text)
             print('\tmatch:', ratio)
             history.append(ratio)
             abs_history.append(int(expected_text == predicted_text))

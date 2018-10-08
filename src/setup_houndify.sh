@@ -3,11 +3,13 @@
 # Sets up the program DeepSpeech.
 # Based on instructions at:
 # https://github.com/Uberi/speech_recognition
+set -e
 
-[ ! -d ../.env_houndify ] && virtualenv ../.env_houndify
+[ -d ../.env_houndify ] && rm -Rf ../.env_houndify
+virtualenv -p python3 ../.env_houndify
 . ../.env_houndify/bin/activate
 
-pip install SpeechRecognition
-pip install -r ../requirements.txt
+pip3 install SpeechRecognition
+pip3 install -r ../requirements.txt
 
-python test_houndify.py
+time python3 test_houndify.py

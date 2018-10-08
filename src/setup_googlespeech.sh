@@ -3,11 +3,13 @@
 # Sets up the program DeepSpeech.
 # Based on instructions at:
 # https://github.com/Uberi/speech_recognition
+set -e
 
-[ ! -d ../.env_googlespeech ] && virtualenv ../.env_googlespeech
+[ -d ../.env_googlespeech ] && rm -Rf ../.env_googlespeech
+virtualenv -p python3 ../.env_googlespeech
 . ../.env_googlespeech/bin/activate
 
-pip install SpeechRecognition
-pip install --only-binary scipy -r ../requirements.txt
+pip3 install SpeechRecognition
+pip3 install --only-binary scipy -r ../requirements.txt
 
-python test_googlespeech.py
+time python3 test_googlespeech.py
