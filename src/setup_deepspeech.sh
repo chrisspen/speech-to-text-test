@@ -21,7 +21,8 @@ DATA_DIR=../data/models/deepspeech
 cd $DATA_DIR
 #wget --continue -O - https://github.com/mozilla/DeepSpeech/releases/download/v0.1.0/deepspeech-0.1.0-models.tar.gz | tar xvfz -
 #wget --continue -O deepspeech.tar.gz https://github.com/mozilla/DeepSpeech/releases/download/v0.1.0/deepspeech-0.1.0-models.tar.gz
-wget --continue -O deepspeech.tar.gz https://github.com/mozilla/DeepSpeech/releases/download/v0.2.0/deepspeech-0.2.0-models.tar.gz
+#wget --continue -O deepspeech.tar.gz https://github.com/mozilla/DeepSpeech/releases/download/v0.2.0/deepspeech-0.2.0-models.tar.gz
+wget --continue -O deepspeech.tar.gz https://github.com/mozilla/DeepSpeech/releases/download/v0.4.0/deepspeech-0.4.0-models.tar.gz
 tar xvfz deepspeech.tar.gz
 cd ../../../src
 
