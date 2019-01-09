@@ -18,6 +18,7 @@ pip3 install -r ../requirements.txt
 AUDIO_DIR=../data/audio
 DATA_DIR=../data/models/deepspeech
 
+rm -Rf $DATA_DIR/*
 cd $DATA_DIR
 #wget --continue -O - https://github.com/mozilla/DeepSpeech/releases/download/v0.1.0/deepspeech-0.1.0-models.tar.gz | tar xvfz -
 #wget --continue -O deepspeech.tar.gz https://github.com/mozilla/DeepSpeech/releases/download/v0.1.0/deepspeech-0.1.0-models.tar.gz
@@ -27,4 +28,4 @@ tar xvfz deepspeech.tar.gz
 cd ../../../src
 
 #chimit deepspeech $DATA_DIR/models/output_graph.pb $AUDIO_DIR/have-a-good-weekend.rate16k-mono.wav $DATA_DIR/models/alphabet.txt $DATA_DIR/models/lm.binary $DATA_DIR/models/trie
-time python3 test_deepspeech.py
+#time python3 test_deepspeech.py

@@ -3,14 +3,17 @@
 """
 CS 2018-1-8
 Evaluates the accuracy of DeepSpeech.
+
+Based on https://github.com/mozilla/DeepSpeech/blob/master/native_client/python/client.py
 """
 from __future__ import absolute_import, division, print_function
 from timeit import default_timer as timer
 
 import os
 import sys
+import wave
 
-import scipy.io.wavfile as wav
+import numpy as np
 
 from deepspeech import Model
 
@@ -29,14 +32,10 @@ args_alphabet = os.path.join(DATA_DIR, 'models/alphabet.txt')
 BEAM_WIDTH = 500
 
 # The alpha hyperparameter of the CTC decoder. Language Model weight
-LM_WEIGHT = 1.75
+LM_ALPHA = 0.75
 
-# The beta hyperparameter of the CTC decoder. Word insertion weight (penalty)
-WORD_COUNT_WEIGHT = 1.00
-
-# Valid word insertion weight. This is used to lessen the word insertion penalty
-# when the inserted word is part of the vocabulary
-VALID_WORD_COUNT_WEIGHT = 1.00
+# The beta hyperparameter of the CTC decoder. Word insertion bonus.
+LM_BETA = 1.85
 
 # These constants are tied to the shape of the graph used (changing them changes
 # the geometry of the first layer), so make sure you use the same constants that
@@ -70,21 +69,17 @@ class Tester(BaseTester):
         if args_lm and args_trie:
             print('Loading language model from files %s %s' % (args_lm, args_trie), file=sys.stderr)
             lm_load_start = timer()
-            self.ds.enableDecoderWithLM(
-                args_alphabet,
-                args_lm, args_trie,
-                LM_WEIGHT,
-                # WORD_COUNT_WEIGHT, # removed in version 0.2.0?
-                VALID_WORD_COUNT_WEIGHT
-            )
+            self.ds.enableDecoderWithLM(args_alphabet, args_lm, args_trie, LM_ALPHA, LM_BETA)
             lm_load_end = timer() - lm_load_start
             print('Loaded language model in %0.3fs.' % (lm_load_end), file=sys.stderr)
 
     def audio_to_text(self, fn):
-        fs, audio = wav.read(fn)
-        # We can assume 16kHz
-        audio_length = len(audio) * (1 / 16000)
+        fin = wave.open(fn, 'rb')
+        fs = fin.getframerate()
         assert fs == 16000, "Only 16000Hz input WAV files are supported for now!"
+        audio = np.frombuffer(fin.readframes(fin.getnframes()), np.int16)
+        audio_length = fin.getnframes() * (1/16000)
+        fin.close()
 
         print('Running inference.', file=sys.stderr)
         inference_start = timer()
