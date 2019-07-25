@@ -58,7 +58,7 @@ class Tester(BaseTester):
 
         files = [args_lm, args_trie, args_model, args_alphabet]
         for f in files:
-            assert os.path.isfile(f)
+            assert os.path.isfile(f), 'File %s does not exist.' % f
 
         print('Loading model from file %s' % (args_model), file=sys.stderr)
         model_load_start = timer()

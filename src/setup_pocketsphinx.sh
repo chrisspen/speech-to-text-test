@@ -9,7 +9,7 @@ set -e
 virtualenv -p python3 ../.env_pocketsphinx
 . ../.env_pocketsphinx/bin/activate
 
-sudo apt-get install swig libpulse-dev
+#sudo apt-get install swig libpulse-dev
 
 pip3 install pocketsphinx SpeechRecognition
 pip3 install -r ../requirements.txt

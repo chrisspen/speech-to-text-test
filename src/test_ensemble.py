@@ -14,6 +14,7 @@ from test_pocketsphinx import Tester as PocketSphinxTester
 from test_deepspeech import Tester as DeepSpeechTester
 from test_houndify import Tester as HoundifyTester
 from test_bingspeech import Tester as BingTester
+from test_ibmspeech import Tester as IBMTester
 
 class Tester(BaseTester):
 
@@ -26,18 +27,20 @@ class Tester(BaseTester):
 
         # Absolute accuracy * differential accuracy used as weight.
         self.weights = {
-            GoogleSpeechTester: (0.6 + 0.726952838341)/2.,
-            PocketSphinxTester: (0.3 + 0.650675023999)/2.,
-            DeepSpeechTester: (0.43 + 0.728972718858)/2.,
-            HoundifyTester: (0.6 + 0.853484911794)/2.,
-            BingTester: (0.666666666667 + 0.837140933267)/2.,
+            GoogleSpeechTester: (0.35 + 0.81)/2.,
+            PocketSphinxTester: (0.17 + 0.66)/2.,
+            DeepSpeechTester: (0.24 + 0.68)/2.,
+            HoundifyTester: (0.38 + 0.88)/2.,
+            IBMTester: (0.31, 0.80)/2.,
+            # BingTester: (0.666666666667 + 0.837140933267)/2.,
         }
         self.testers = [
             GoogleSpeechTester(),
             PocketSphinxTester(),
             DeepSpeechTester(),
             HoundifyTester(),
-            BingTester(delay=False),
+            IBMTester(),
+            # BingTester(delay=False),
         ]
 
     def audio_to_text(self, fn):

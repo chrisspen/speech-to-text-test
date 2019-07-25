@@ -50,7 +50,14 @@ Microsoft ended their public API. No further tests are possible.
 
 ./setup_bingspeech.sh
 
+IBM
+---
+
+./setup_ibmspeech.sh
+
 Ensemble
 --------
+
+A weighted average of all of the above.
 
 ./setup_ensemble.sh
