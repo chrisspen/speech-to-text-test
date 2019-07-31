@@ -9,7 +9,6 @@ set -e
 virtualenv -p python3 ../.env_googlespeech
 . ../.env_googlespeech/bin/activate
 
-pip3 install SpeechRecognition
 pip3 install --only-binary scipy -r ../requirements.txt
 
 time python3 test_googlespeech.py

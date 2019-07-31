@@ -10,7 +10,7 @@ virtualenv -p python3 ../.env_ensemble
 
 #sudo apt-get install swig libpulse-dev
 
-pip3 install --only-binary scipy pocketsphinx SpeechRecognition deepspeech
+pip3 install --only-binary scipy pocketsphinx deepspeech
 pip3 install --only-binary scipy -r ../requirements.txt
 
 python3 test_ensemble.py

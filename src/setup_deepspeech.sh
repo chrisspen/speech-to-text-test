@@ -31,4 +31,4 @@ tar xvfz deepspeech.tar.gz
 cd ../../../src
 
 #chimit deepspeech $DATA_DIR/models/output_graph.pb $AUDIO_DIR/have-a-good-weekend.rate16k-mono.wav $DATA_DIR/models/alphabet.txt $DATA_DIR/models/lm.binary $DATA_DIR/models/trie
-#time python3 test_deepspeech.py
+time python3 test_deepspeech.py

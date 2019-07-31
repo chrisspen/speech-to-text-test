@@ -27,11 +27,11 @@ class Tester(BaseTester):
 
         # Absolute accuracy * differential accuracy used as weight.
         self.weights = {
-            GoogleSpeechTester: (0.35 + 0.81)/2.,
+            GoogleSpeechTester: (0.34 + 0.81)/2.,
             PocketSphinxTester: (0.17 + 0.66)/2.,
-            DeepSpeechTester: (0.24 + 0.68)/2.,
-            HoundifyTester: (0.38 + 0.88)/2.,
-            IBMTester: (0.31, 0.80)/2.,
+            DeepSpeechTester: (0.32 + 0.76)/2.,
+            HoundifyTester: (0.38 + 0.89)/2.,
+            IBMTester: (0.32 + 0.80)/2.,
             # BingTester: (0.666666666667 + 0.837140933267)/2.,
         }
         self.testers = [

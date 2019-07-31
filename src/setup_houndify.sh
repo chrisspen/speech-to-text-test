@@ -9,7 +9,6 @@ set -e
 virtualenv -p python3 ../.env_houndify
 . ../.env_houndify/bin/activate
 
-pip3 install SpeechRecognition
 pip3 install -r ../requirements.txt
 
 time python3 test_houndify.py

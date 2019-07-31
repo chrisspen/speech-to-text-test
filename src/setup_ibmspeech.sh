@@ -1,10 +1,12 @@
 #!/bin/bash
+set -e
 
-#TODO: enable when upstream supports IBM apikey
-#[ ! -d ../.env_ibmspeech ] && virtualenv ../.env_ibmspeech
+PYTHONVER=3
+
+[ -d ../.env_ibmspeech ]  && rm -Rf ../.env_ibmspeech
+virtualenv -p python$PYTHONVER ../.env_ibmspeech
 . ../.env_ibmspeech/bin/activate
 
-pip install SpeechRecognition
-pip install --only-binary scipy -r ../requirements.txt
+pip$PYTHONVER install --only-binary scipy -r ../requirements.txt
 
-python test_ibmspeech.py
+time python$PYTHONVER test_ibmspeech.py

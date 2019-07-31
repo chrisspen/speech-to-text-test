@@ -35,6 +35,7 @@ class Tester(BaseTester):
                 print('Running inference.', file=sys.stderr)
                 inference_start = timer()
                 text = self.recognizer.recognize_ibm(audio, key=KEY) # pylint: disable=undefined-variable
+                # text = self.recognizer.recognize_ibm(audio, username=USERNAME, password=PASSWORD) # pylint: disable=undefined-variable
 
                 # IBM adds some unnecessary punctuation, which our corpus doesn't check, so strip it out.
                 text = text.replace('?', '')

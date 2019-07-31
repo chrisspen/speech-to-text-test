@@ -7,7 +7,6 @@
 [ ! -d ../.env_bingspeech ] && virtualenv ../.env_bingspeech
 . ../.env_bingspeech/bin/activate
 
-pip install SpeechRecognition
 pip install --only-binary scipy -r ../requirements.txt
 
 python test_bingspeech.py
