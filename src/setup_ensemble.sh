@@ -13,4 +13,4 @@ virtualenv -p python3 ../.env_ensemble
 pip3 install --only-binary scipy pocketsphinx deepspeech
 pip3 install --only-binary scipy -r ../requirements.txt
 
-python3 test_ensemble.py
+time python3 test_ensemble.py

@@ -4,4 +4,5 @@ pyaudio
 matplotlib
 numpy
 scikit-learn
+boto3
 -e git://github.com/chrisspen/speech_recognition.git#egg=speech_recognition
