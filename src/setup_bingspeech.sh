@@ -4,9 +4,10 @@
 # Based on instructions at:
 # https://github.com/mozilla/DeepSpeech
 
-[ ! -d ../.env_bingspeech ] && virtualenv ../.env_bingspeech
+[ -d ../.env_bingspeech ] && rm -Rf ../.env_bingspeech
+virtualenv -p python3 ../.env_bingspeech
 . ../.env_bingspeech/bin/activate
 
 pip install --only-binary scipy -r ../requirements.txt
 
-python test_bingspeech.py
+time python test_bingspeech.py

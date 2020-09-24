@@ -5,4 +5,5 @@ matplotlib
 numpy
 scikit-learn
 boto3
+pydub
 -e git://github.com/chrisspen/speech_recognition.git#egg=speech_recognition

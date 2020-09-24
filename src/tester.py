@@ -15,17 +15,20 @@ AUDIO_DIR = '../data/audio'
 
 def rev_accuracy(r, h):
     # Inverse of the approximate word error rate, fastest and most like Rev's metric.
-    from difflib import SequenceMatcher
+    # print('rev_accuracy.r:', r)
+    # print('rev_accuracy.h:', h)
     # https://docs.python.org/2/library/difflib.html#difflib.SequenceMatcher.ratio
     r = r.strip().lower().replace("'", "").replace(".", "").replace(",", "")
     h = h.strip().lower().replace("'", "").replace(".", "").replace(",", "")
     r = r.split()
     h = h.split()
     # return 1 - SequenceMatcher(None, r, h).ratio() # error rate
-    return SequenceMatcher(None, r, h).ratio() # accuracy rate
+    acc = SequenceMatcher(None, r, h).ratio() # accuracy rate
+    # print('rev_accuracy.acc:', acc)
+    return acc
 
 
-class BaseTester(object):
+class BaseTester:
 
     name = None
 

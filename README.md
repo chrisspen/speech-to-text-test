@@ -55,6 +55,11 @@ IBM
 
 ./setup_ibmspeech.sh
 
+AssemblyAI
+----------
+
+./setup_assemblyai.sh
+
 Ensemble
 --------
 

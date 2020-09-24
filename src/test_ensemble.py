@@ -13,8 +13,10 @@ from test_googlespeech import Tester as GoogleSpeechTester
 from test_pocketsphinx import Tester as PocketSphinxTester
 from test_deepspeech import Tester as DeepSpeechTester
 from test_houndify import Tester as HoundifyTester
-from test_bingspeech import Tester as BingTester
+# from test_bingspeech import Tester as BingTester
 from test_ibmspeech import Tester as IBMTester
+from test_kaldi import Tester as KaldiTester
+from test_jasper import Tester as JasperTester
 
 class Tester(BaseTester):
 
@@ -32,14 +34,18 @@ class Tester(BaseTester):
             DeepSpeechTester: (0.32 + 0.76)/2.,
             HoundifyTester: (0.38 + 0.89)/2.,
             IBMTester: (0.32 + 0.80)/2.,
+            KaldiTester: (0.42 + 0.85)/2.,
+            JasperTester: (0.32 + 0.85)/2.,
             # BingTester: (0.666666666667 + 0.837140933267)/2.,
         }
         self.testers = [
             GoogleSpeechTester(),
-            PocketSphinxTester(),
-            DeepSpeechTester(),
-            HoundifyTester(),
-            IBMTester(),
+            # PocketSphinxTester(),
+            # DeepSpeechTester(),
+            # HoundifyTester(),
+            # IBMTester(),
+            KaldiTester(),
+            JasperTester(),
             # BingTester(delay=False),
         ]
 
