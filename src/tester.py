@@ -44,13 +44,14 @@ class BaseTester:
         history = []
         rev_history = []
         abs_history = []
-        data = yaml.load(open(os.path.join(AUDIO_DIR, ANNOTATIONS_FN))) or {}
+        data = yaml.safe_load(open(os.path.join(AUDIO_DIR, ANNOTATIONS_FN))) or {}
         i = 0
         total = len(data)
         for fn in sorted(data):
             i += 1
             print('Processing %i of %i...' % (i, total))
             if self.audio_format and self.audio_format not in fn:
+                print('Skipping audio format that does not match %s.' % self.audio_format)
                 continue
             print(fn)
             predicted_text = self.audio_to_text(os.path.join(AUDIO_DIR, fn))

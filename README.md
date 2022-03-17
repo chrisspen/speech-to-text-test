@@ -60,6 +60,13 @@ AssemblyAI
 
 ./setup_assemblyai.sh
 
+Vosk
+----
+
+https://alphacephei.com/vosk
+
+./setup_vosk.sh
+
 Ensemble
 --------
 
