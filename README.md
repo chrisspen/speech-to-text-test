@@ -67,6 +67,13 @@ https://alphacephei.com/vosk
 
 ./setup_vosk.sh
 
+Whisper
+----------
+
+https://github.com/ggerganov/whisper.cpp
+
+./setup_whisper.sh
+
 Ensemble
 --------
 
