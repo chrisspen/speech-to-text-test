@@ -67,3 +67,4 @@ docs/_build/
 /*.geany
 /nohup.out
 /tmp
+/.venvs

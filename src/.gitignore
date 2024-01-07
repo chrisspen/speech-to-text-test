@@ -1,1 +1,4 @@
 *_sensitive.py
+/audio_cache
+/pretrained_models
+/model_checkpoints
