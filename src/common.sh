@@ -7,7 +7,7 @@ init_venv () {
     mkdir -p .venvs || true
     [ -d ../.venvs/$name ]  && rm -Rf ../.venvs/$name
     python$pipver -m venv ../.venvs/$name
-    ../.venvs/$name/bin/pip installl -U pip
+    ../.venvs/$name/bin/pip install -U pip
     echo "[$(date)] Initialized Python virtual environment."
 }
 
