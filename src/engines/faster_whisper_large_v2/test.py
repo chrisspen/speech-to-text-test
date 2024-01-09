@@ -16,47 +16,36 @@ import tempfile
 import wave
 from subprocess import getstatusoutput
 
-from whispercpp import Whisper, MODELS
+from faster_whisper import WhisperModel
+
+sys.path.insert(0, '../..')
 
 from tester import BaseTester, RATE16K_MONO_WAV
 
-# These constants control the beam search decoder
-MODELS
-
-WHISPER_BIN = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../whisper.cpp/main')
-assert os.path.isfile(WHISPER_BIN), 'Whisper missing: %s' % WHISPER_BIN
 
 class Tester(BaseTester):
 
-    name = 'Whisper'
+    name = 'faster_whisper_large_v2'
 
     audio_format = RATE16K_MONO_WAV
 
     def __init__(self, *args, **kwargs):
         super(Tester, self).__init__(*args, **kwargs)
-        self.w = Whisper('large')
+        self.model = WhisperModel("large-v2", device="cpu", compute_type="int8")
 
     def audio_to_text(self, fn):
         print('Running inference.', file=sys.stderr)
         fqfn = os.path.abspath(fn)
         inference_start = timer()
 
-        # with tempfile.NamedTemporaryFile() as tmp:
-            # print('Using temp file:', tmp.name)
-            # cmd = f'cd {WHISPER_BIN}/..; {WHISPER_BIN} -f {fqfn} -m models/ggml-large.bin --output-txt --output-file {tmp.name}'
-            # print('cmd:', cmd)
-            # status, output = getstatusoutput(cmd)
-            # print('status:', status)
-            # real_temp_fn = tmp.name+'.txt'
-            # with open(real_temp_fn, 'r') as fin:
-                # text = (fin.read() or '').strip()
-            # os.remove(real_temp_fn)
-        result = self.w.transcribe(fqfn)
-        text = self.w.extract_text(result)
-        text = (text or [''])[0]
+        segments, info = self.model.transcribe(fqfn)
+        # Returns a result of the form:
+        # segments = [{start: end: text:}]
 
         inference_end = timer() - inference_start
 
+        text = ' '.join(segment.text for segment in segments)
+        text = text.strip()
         print('raw text:', repr(text))
         text = text.replace('[BLANK_AUDIO]', '').strip()
         text = text.replace('"', '') # It likes to try and insert quotes.

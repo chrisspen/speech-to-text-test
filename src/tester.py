@@ -2,6 +2,8 @@ from __future__ import absolute_import, division, print_function
 
 import os
 import re
+import pathlib
+
 from difflib import SequenceMatcher
 
 import yaml
@@ -9,9 +11,11 @@ import yaml
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+
 ANNOTATIONS_FN = 'annotations.yaml'
 RATE16K_MONO_WAV = 'rate16k-mono.wav'
-AUDIO_DIR = '../data/audio'
+AUDIO_DIR = os.path.join(PROJECT_ROOT, 'data/audio')
 
 
 def clean_text(text):

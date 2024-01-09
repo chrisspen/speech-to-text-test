@@ -16,7 +16,7 @@ import wave
 import traceback
 from subprocess import getstatusoutput
 
-from speechbrain.pretrained import EncoderDecoderASR
+from speechbrain.inference.ASR import EncoderASR
 
 from tester import BaseTester, RATE16K_MONO_WAV
 
@@ -29,7 +29,7 @@ class Tester(BaseTester):
 
     def __init__(self, *args, **kwargs):
         super(Tester, self).__init__(*args, **kwargs)
-        self.asr_model = EncoderDecoderASR.from_hparams(source="speechbrain/asr-wav2vec2-commonvoice-14-en", savedir="pretrained_models/asr-wav2vec2-commonvoice-14-en")
+        self.asr_model = EncoderASR.from_hparams(source="speechbrain/asr-wav2vec2-commonvoice-14-en", savedir="pretrained_models/asr-wav2vec2-commonvoice-14-en")
 
     def audio_to_text(self, fn):
         print('Running inference.', file=sys.stderr)
@@ -46,12 +46,7 @@ class Tester(BaseTester):
         inference_end = timer() - inference_start
 
         print('raw text:', repr(text))
-        text = (text or '').strip()
-        # text = text.replace('[BLANK_AUDIO]', '').strip()
-        # text = text.replace('"', '') # It likes to try and insert quotes.
-        # text = re.sub(r'\([^\)]+\)', '', text, flags=re.MULTILINE).strip() # It likes to note sounds effects like "(mouse clicks)"
-        # text = re.sub(r'\[[^\]]+\]', '', text, flags=re.MULTILINE).strip() # It likes to note sounds effects like "[ silence ]"
-        # text = re.sub(r'[\s\t\n]+', ' ', text).strip() # compact whitespace
+        text = (text or '').strip().lower()
         print('cleaned text:', text)
         print('Inference took %0.3fs.' % (inference_end), file=sys.stderr)
         return text

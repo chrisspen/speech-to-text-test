@@ -68,3 +68,8 @@ docs/_build/
 /nohup.out
 /tmp
 /.venvs
+*_sensitive.py
+wav2vec2_checkpoint
+audio_cache
+pretrained_models
+model_checkpoints
